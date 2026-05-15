@@ -19,9 +19,17 @@ export const INSTRUMENTS: Record<string, Instrument> = {
   guitar: {
     id: 'guitar',
     name: 'Guitar',
-    defaultFretCount: 22,
+    defaultFretCount: 24,
     defaultTuningId: 'guitar-standard',
     supportsCapo: true,
+    supportsCourses: false,
+  },
+  'guitar-8string': {
+    id: 'guitar-8string',
+    name: 'Guitar (8-string)',
+    defaultFretCount: 24,
+    defaultTuningId: 'guitar-8string-standard',
+    supportsCapo: false,
     supportsCourses: false,
   },
   'bass-4': {

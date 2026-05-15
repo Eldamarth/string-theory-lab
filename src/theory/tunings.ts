@@ -46,6 +46,56 @@ export const TUNINGS: Record<string, Tuning> = {
     description: 'Open D major chord.',
   },
 
+  'guitar-half-step-down': {
+    id: 'guitar-half-step-down',
+    instrumentId: 'guitar',
+    name: 'Half Step Down (Eb)',
+    stringsLowToHigh: ['Eb', 'Ab', 'Db', 'Gb', 'Bb', 'Eb'],
+  },
+  'guitar-full-step-down': {
+    id: 'guitar-full-step-down',
+    instrumentId: 'guitar',
+    name: 'Full Step Down (D)',
+    stringsLowToHigh: ['D', 'G', 'C', 'F', 'A', 'D'],
+    description: 'D-standard. Used by Nightwish and many metal bands.',
+  },
+  'guitar-c-standard': {
+    id: 'guitar-c-standard',
+    instrumentId: 'guitar',
+    name: 'C Standard',
+    stringsLowToHigh: ['C', 'F', 'Bb', 'Eb', 'G', 'C'],
+    description: 'Two whole steps down. Used by Dethklok and extreme metal.',
+  },
+  'guitar-drop-c': {
+    id: 'guitar-drop-c',
+    instrumentId: 'guitar',
+    name: 'Drop C',
+    stringsLowToHigh: ['C', 'G', 'C', 'F', 'A', 'D'],
+    description: 'D-standard with lowest string dropped to C. Used by System of a Down.',
+  },
+
+  // ── 8-STRING GUITAR ───────────────────────────────────────────────────────
+  'guitar-8string-standard': {
+    id: 'guitar-8string-standard',
+    instrumentId: 'guitar-8string',
+    name: 'Standard (F#BEADGBe)',
+    stringsLowToHigh: ['F#', 'B', 'E', 'A', 'D', 'G', 'B', 'E'],
+  },
+  'guitar-8string-drop-e': {
+    id: 'guitar-8string-drop-e',
+    instrumentId: 'guitar-8string',
+    name: 'Drop E',
+    stringsLowToHigh: ['E', 'B', 'E', 'A', 'D', 'G', 'B', 'E'],
+    description: 'Lowest string dropped from F# to E.',
+  },
+  'guitar-8string-drop-eb': {
+    id: 'guitar-8string-drop-eb',
+    instrumentId: 'guitar-8string',
+    name: 'Drop D# / Drop Eb',
+    stringsLowToHigh: ['Eb', 'B', 'E', 'A', 'D', 'G', 'B', 'E'],
+    description: 'Lowest string dropped to Eb/D#.',
+  },
+
   // ── BASS 4-STRING ─────────────────────────────────────────────────────────
   'bass-4-standard': {
     id: 'bass-4-standard',
@@ -75,6 +125,13 @@ export const TUNINGS: Record<string, Tuning> = {
     name: 'Standard (GDAe)',
     stringsLowToHigh: ['G', 'D', 'A', 'E'],
     description: 'Standard mandolin/violin tuning (5ths).',
+  },
+  'mandolin-irish-gdad': {
+    id: 'mandolin-irish-gdad',
+    instrumentId: 'mandolin',
+    name: 'Irish GDAD',
+    stringsLowToHigh: ['G', 'D', 'A', 'D'],
+    description: 'High string dropped from E to D. Common in Irish/Celtic playing.',
   },
 
   // ── BOUZOUKI ──────────────────────────────────────────────────────────────
@@ -138,6 +195,20 @@ export const TUNINGS: Record<string, Tuning> = {
       visualLength: 'short',
     }],
     description: 'Modal tuning.',
+  },
+
+  'banjo-5string-irish-gdae': {
+    id: 'banjo-5string-irish-gdae',
+    instrumentId: 'banjo-5string',
+    name: 'Irish GDAE',
+    stringsLowToHigh: ['G', 'D', 'A', 'E', 'G'],
+    specialStrings: [{
+      stringIndex: 4,
+      startsAtFret: 5,
+      isDrone: true,
+      visualLength: 'short',
+    }],
+    description: 'Irish tenor tuning on a 5-string banjo. G drone on 5th string.',
   },
 
   // ── BANJO TENOR / IRISH ───────────────────────────────────────────────────

@@ -26,13 +26,10 @@ function stringY(stringIndex: number, stringCount: number): number {
   return FRET_LABEL_HEIGHT + (stringCount - 1 - stringIndex) * STRING_SPACING + STRING_SPACING / 2
 }
 
-function getDotFill(pos: FretPosition, rootNote: string): string {
+function getDotFill(pos: FretPosition): string {
   if (!pos.isPlayable) return tokens.note.unplayable
-  if (!pos.isMatch) return tokens.note.inactive
-  const rootPc = pos.pitchClass
-  // Check if this position is the root
-  const isRoot = pos.intervalLabel === '1'
-  return isRoot ? tokens.note.root : tokens.note.match
+  if (!pos.isMatch) return pos.fret === 0 ? tokens.note.openString : tokens.note.inactive
+  return pos.intervalLabel === '1' ? tokens.note.root : tokens.note.match
 }
 
 function getLabel(pos: FretPosition, displayMode: DisplayMode, noteSpelling: NoteSpelling, rootNote: string): string | null {
@@ -107,10 +104,10 @@ export function Fretboard({ positions, displayMode, noteSpelling, rootNote }: Fr
         })}
 
         {/* Standard fret marker dots (3, 5, 7, 9, 12, 15, 17, 19, 21) */}
-        {[3, 5, 7, 9, 12, 15, 17, 19, 21].filter(f => f <= fretCount).map(fret => {
+        {[3, 5, 7, 9, 12, 15, 17, 19, 21, 24].filter(f => f <= fretCount).map(fret => {
           const x = STRING_PADDING_LEFT + (fret - 0.5) * FRET_WIDTH
           const midY = FRET_LABEL_HEIGHT + ((stringCount - 1) * STRING_SPACING) / 2 + STRING_SPACING / 2
-          return fret === 12 ? (
+          return fret === 12 || fret === 24 ? (
             <g key={`marker-${fret}`}>
               <circle cx={x} cy={midY - 8} r={4} fill="#374151" />
               <circle cx={x} cy={midY + 8} r={4} fill="#374151" />
@@ -125,7 +122,7 @@ export function Fretboard({ positions, displayMode, noteSpelling, rootNote }: Fr
           string.map((pos) => {
             const cx = fretX(pos.fret)
             const cy = stringY(si, stringCount)
-            const fill = getDotFill(pos, rootNote)
+            const fill = getDotFill(pos)
             const label = getLabel(pos, displayMode, noteSpelling, rootNote)
             const showDot = pos.isMatch || (pos.isPlayable && !pos.isMatch)
 

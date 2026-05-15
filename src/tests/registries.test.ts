@@ -6,13 +6,13 @@ describe('Instrument registry', () => {
   it('returns correct instrument by id', () => {
     const guitar = getInstrument('guitar')
     expect(guitar.name).toBe('Guitar')
-    expect(guitar.defaultFretCount).toBe(22)
+    expect(guitar.defaultFretCount).toBe(24)
     expect(guitar.supportsCapo).toBe(true)
     expect(guitar.defaultTuningId).toBe('guitar-standard')
   })
 
-  it('returns all 7 instruments', () => {
-    expect(getAllInstruments()).toHaveLength(7)
+  it('returns all 8 instruments', () => {
+    expect(getAllInstruments()).toHaveLength(8)
   })
 
   it('includes banjo-5string with drone string note', () => {
@@ -44,12 +44,16 @@ describe('Tuning registry', () => {
     tunings.forEach(t => expect(t.instrumentId).toBe('guitar'))
   })
 
-  it('getTuningsForInstrument returns 5 guitar tunings', () => {
-    expect(getTuningsForInstrument('guitar')).toHaveLength(5)
+  it('getTuningsForInstrument returns 9 guitar tunings', () => {
+    expect(getTuningsForInstrument('guitar')).toHaveLength(9)
   })
 
-  it('getTuningsForInstrument returns 3 banjo-5string tunings', () => {
-    expect(getTuningsForInstrument('banjo-5string')).toHaveLength(3)
+  it('getTuningsForInstrument returns 3 guitar-8string tunings', () => {
+    expect(getTuningsForInstrument('guitar-8string')).toHaveLength(3)
+  })
+
+  it('getTuningsForInstrument returns 4 banjo-5string tunings', () => {
+    expect(getTuningsForInstrument('banjo-5string')).toHaveLength(4)
   })
 
   it('getTuningsForInstrument returns empty array for unknown instrument', () => {
